@@ -10,17 +10,17 @@ spec:
   replicas: {{.Values.replicas}}
   selector:
     matchLabels:
-      app: {{.Values.app}}
+      app: {{ .Values.app}}
   template:
     metadata:
       labels:
-        app: {{.Values.app}}
+        app: {{ .Values.app}}
     spec:
         containers:
-          - name: {{.Values.name2}}
-            image: {{.Values.image}}
+          - name: {{.Values.containers.name}}
+            image: {{.Values.containers.image}}
             ports:
-              - containerPort: {{.Values.containerPort}}
+              - containerPort: {{.Values.containers.ports.containerPort}}
             resources:
               requests:
                 cpu: 300m
@@ -28,3 +28,4 @@ spec:
               limits:
                 cpu: 350m
                 memory: 128Mi  
+
