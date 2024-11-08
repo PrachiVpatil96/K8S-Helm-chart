@@ -6,7 +6,7 @@ metadata:
   labels:
     app: {{.Values.app}}
 spec:
-  minReadySeconds: {{.Values.minReadySeconds }}
+  minReadySeconds: {{.Values.minReadySeconds}}
   replicas: {{.Values.replicas}}
   selector:
     matchLabels:
@@ -27,5 +27,4 @@ spec:
                 memory: 64Mi
               limits:
                 cpu: 350m
-                memory: 128Mi  
-
+                memory: 128Mi
