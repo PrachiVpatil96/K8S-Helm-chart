@@ -2,25 +2,25 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: my-deploy
+  name: {{.Values.name1 }}
   labels:
-    app: web-deploy
+    app: {{.Values.app}}
 spec:
-  minReadySeconds: 5
-  replicas: 2
+  minReadySeconds: {{.Values.minReadySeconds }}
+  replicas: {{.Values.replicas}}
   selector:
     matchLabels:
-      app: web-deploy
+      app: {{.Values.app}}
   template:
     metadata:
       labels:
-        app: web-deploy
+        app: {{.Values.app}}
     spec:
         containers:
-          - name: web
-            image: nginx:1.27
+          - name: {{.Values.name2}}
+            image: {{.Values.image}}
             ports:
-              - containerPort: 80
+              - containerPort: {{.Values.containerPort}}
             resources:
               requests:
                 cpu: 300m
