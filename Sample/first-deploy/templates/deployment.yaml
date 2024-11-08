@@ -1,0 +1,30 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: my-deploy
+  labels:
+    app: web-deploy
+spec:
+  minReadySeconds: 5
+  replicas: 2
+  selector:
+    matchLabels:
+      app: web-deploy
+  template:
+    metadata:
+      labels:
+        app: web-deploy
+    spec:
+        containers:
+          - name: web
+            image: nginx:1.27
+            ports:
+              - containerPort: 80
+            resources:
+              requests:
+                cpu: 300m
+                memory: 64Mi
+              limits:
+                cpu: 350m
+                memory: 128Mi  
