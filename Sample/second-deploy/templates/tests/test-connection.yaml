@@ -1,9 +1,9 @@
 apiVersion: v1
 kind: Pod
 metadata:
-  name: "{{ include "second-deploy.fullname" . }}-test-connection"
+  name: "{{ include "second-deploy.fullname" .}}-test-connection"
   labels:
-    {{- include "second-deploy.labels" . | nindent 4 }}
+    {{- include "second-deploy.labels" .| nindent 4 }}
   annotations:
     "helm.sh/hook": test
 spec:
@@ -11,5 +11,5 @@ spec:
     - name: wget
       image: busybox
       command: ['wget']
-      args: ['{{ include "second-deploy.fullname" . }}:{{ .Values.service.port }}']
+      args: ['{{ include "second-deploy.fullname" . }}:{{ - --port = {{.Values.service.port }}']
   restartPolicy: Never
