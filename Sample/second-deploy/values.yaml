@@ -8,6 +8,14 @@ containers:
   image: nginx:1.27
   ports:
     containerPort: 80
+service: 
+  name: deploy-service
+  selector:
+    app: app-deploy
+  type: Nodeport
+  ports:
+    port: 80
+    targetPort: 80
 
 
 
