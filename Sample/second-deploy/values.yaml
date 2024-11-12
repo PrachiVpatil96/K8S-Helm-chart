@@ -11,3 +11,5 @@ containers:
 
 
 
+serviceAccount:
+  create: true  # Set to true if you want Helm to create a ServiceAccount, or false if you will use an existing one
