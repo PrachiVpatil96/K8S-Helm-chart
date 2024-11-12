@@ -29,3 +29,5 @@ ingress:
 #       paths:
 #         - /
 #   tls: []
+hpa:
+  enabled: false
