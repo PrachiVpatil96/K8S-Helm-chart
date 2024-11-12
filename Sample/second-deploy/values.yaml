@@ -29,5 +29,6 @@ ingress:
 #       paths:
 #         - /
 #   tls: []
-hpa:
+autoscaling:
   enabled: false
+
