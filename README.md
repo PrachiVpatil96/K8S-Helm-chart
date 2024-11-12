@@ -20,7 +20,7 @@ curl -fsSL https://raw.githubusercontent.com/helm/helm/main/scripts/get-helm-3 |
      This will create a folder named `firsr-chart` with a standard Helm directory structure:
 
      ```
-    my-chart/
+    first-chart/
         ├── Chart.yaml      # Metadata about the chart
         ├── values.yaml     # Default values for the chart
         ├── charts/         # Dependency charts
