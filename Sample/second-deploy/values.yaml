@@ -30,5 +30,5 @@ ingress:
 #         - /
 #   tls: []
 autoscaling:
-  enabled: false
+  enabled: true
 
