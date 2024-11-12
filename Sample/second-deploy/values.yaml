@@ -13,3 +13,14 @@ containers:
 
 serviceAccount:
   create: true  # Set to true if you want Helm to create a ServiceAccount, or false if you will use an existing one
+
+
+ingress:
+  enabled: true  # Set to true if you want an ingress resource to be created, or false otherwise
+  # Optionally, add other ingress-related configurations here
+  annotations: {}
+  hosts:
+    - host: chart-example.local
+      paths:
+        - /
+  tls: []
