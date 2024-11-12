@@ -1,0 +1,13 @@
+---
+name: deployment
+app: app-deploy
+minReadySeconds: 5
+replicas: 5
+containers:
+  name: web
+  image: nginx:1.27
+  ports:
+    containerPort: 80
+
+
+
