@@ -11,5 +11,5 @@ spec:
     - name: wget
       image: busybox
       command: ['wget']
-      args: ['{{ include "second-deploy.fullname" . }}:{{ - --port = {{.Values.service.port }}']
+      args: ['{{ include "second-deploy.fullname" . }}:{{.Values.service.ports.port }}']
   restartPolicy: Never
