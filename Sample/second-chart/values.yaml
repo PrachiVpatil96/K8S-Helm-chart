@@ -66,7 +66,7 @@ ingress:
         name: skate-svc
         port: 80
 
-  hpas:
+hpas:
   - name: preschool-hpa
     minReplicas: 1
     maxReplicas: 5
