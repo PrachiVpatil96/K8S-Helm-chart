@@ -1,4 +1,4 @@
----
+
 {{- range .Values.deployments }}
 apiVersion: apps/v1
 kind: Deployment
@@ -30,4 +30,3 @@ spec:
               cpu: {{ .container.resources.limits.cpu }}
               memory: {{ .container.resources.limits.memory }}
 {{- end }}
-
