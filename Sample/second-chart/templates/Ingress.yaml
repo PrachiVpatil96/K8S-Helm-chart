@@ -26,4 +26,3 @@ spec:
                   number: {{ .backendService.port }}
 {{- end }}
 {{- end }}
-{{- end }}
