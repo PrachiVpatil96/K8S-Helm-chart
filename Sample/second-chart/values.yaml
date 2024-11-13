@@ -1,0 +1,98 @@
+---
+deployments:
+  - name: preschool
+    replicas: 2
+    minReadySeconds: 5
+    container:
+      name: web
+      image: prachiii123/preschool:1.0
+      port: 80
+      resources:
+        requests:
+          cpu: "100m"
+          memory: "64Mi"
+        limits:
+          cpu: "500m"
+          memory: "128Mi"
+  
+  - name: skate
+    replicas: 2
+    minReadySeconds: 5
+    container:
+      name: web
+      image: prachiii123/skate:1.0
+      port: 80
+      resources:
+        requests:
+          cpu: "100m"
+          memory: "64Mi"
+        limits:
+          cpu: "500m"
+          memory: "128Mi"
+
+services:
+  - name: skate
+    type: NodePort
+    selector:
+      app: skate
+    port: 80
+    targetPort: 80
+
+  - name: preschool
+    type: NodePort
+    selector:
+      app: preschool
+    port: 80
+    targetPort: 80
+
+
+ingress:
+  enabled: true
+  name: ingress-app
+  annotations:
+    nginx.ingress.kubernetes.io/rewrite-target: /
+  labels:
+    app: web
+  ingressClassName: nginx
+  rules:
+    - path: /preschool
+      pathType: Prefix
+      backendService:
+        name: preschool-svc
+        port: 80
+    - path: /skate
+      pathType: Prefix
+      backendService:
+        name: skate-svc
+        port: 80
+
+  hpas:
+  - name: preschool-hpa
+    minReplicas: 1
+    maxReplicas: 5
+    scaleTarget:
+      apiVersion: apps/v1
+      kind: Deployment
+      name: preschool-deploy
+    metrics:
+      - type: Resource
+        resource:
+          name: cpu
+          target:
+            type: Utilization
+            averageUtilization: 70
+
+  - name: skate-hpa
+    minReplicas: 2
+    maxReplicas: 5
+    scaleTarget:
+      apiVersion: apps/v1
+      kind: Deployment
+      name: skate-deploy
+    metrics:
+      - type: Resource
+        resource:
+          name: cpu
+          target:
+            type: Utilization
+            averageUtilization: 70
